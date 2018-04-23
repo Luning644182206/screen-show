@@ -1,0 +1,8 @@
+node_modules/*
+testout/*
+coverage/*
+_dev/**
+npm-debug.log
+output
+output.zip
+yarn-error.log
