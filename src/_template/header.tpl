@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link rel="shortcut icon" href="" type="image/favicon">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image">
     <script src="/src/assets/js/mod.js"></script><!--ignore-->
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
   </head>
