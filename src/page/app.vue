@@ -42,6 +42,14 @@
                 border-radius: .5rem;
             }
         }
+        transition: transform 250ms ease;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        transform: translate(-2.99rem);
+        &:hover {
+          transform: translate(0px);
+        }
     }
     .iframe {
         height: 100%;
