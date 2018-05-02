@@ -90,7 +90,7 @@ export default {
       webAddress: [
         {
             name:'Keywords Extraction',
-            link:'http://67.209.177.93/'
+            link:'http://demo.yzlab.net:8090'
         }
       ]
     }
