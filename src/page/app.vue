@@ -1,9 +1,9 @@
 <template lang="jade">
 .show-app
   .menu
-    .photo
+    .photo(@click="isHome = true")
       img(src="/src/assets/images/favicon.png")
-    .name
+    .name(@click="clickAddress()")
       ul
         li.one(v-for="item in webAddress")
           a(:href="item.link" target="showHere" @click="showIframe") {{item.name}}
@@ -14,7 +14,8 @@
         a.home(href="http://yzlab.net/" target="_blank")
           img(src="/src/assets/images/home.png")
       .copyright Copyright © 2005-2018 DMS Lab
-  iframe.iframe(v-show="iframeState", id="show-iframe", frameBorder=0, name="showHere", scrolling=auto, src="")
+  iframe.iframe(v-show="iframeState && (!isHome)", id="show-iframe", frameBorder=0, name="showHere", scrolling=auto, src="")
+  photo(v-show="isHome")
 </template>
 
 <style lang="less">
@@ -27,12 +28,14 @@
     }
     .menu {
         color: #fff;
-        background-color: #394e66;
+        background: url('../assets/images/menu-background.png') no-repeat;
         position: fixed;
         height: 100%;
         width: 3rem;
-        box-shadow: 0 0 16px 11px #888;
+        z-index: 1000;
+        // box-shadow: 0 0 16px 11px #888;
         .photo {
+            cursor: pointer;
             padding-top: 20%;
             text-align: center;
             // margin: 20% 30%;
@@ -49,6 +52,7 @@
         transform: translate(-2.99rem);
         &:hover {
           transform: translate(0px);
+          /*box-shadow: 0 0 16px 11px #888;*/
         }
     }
     .iframe {
@@ -81,8 +85,18 @@
 </style>
 
 <script>
+import photo from './components/photo';
+import _ from 'lodash';
+let currentComponent;
+window.onresize = _.throttle(function () {
+    // currentComponent.init();
+    currentComponent.iframeHeightResize();
+}, 500);
 export default {
-  name: 'hello',
+  name: 'app',
+  components: {
+    photo
+  },
   data () {
     return {
       iframeState:false,
@@ -92,17 +106,22 @@ export default {
             name:'Keywords Extraction',
             link:'http://demo.yzlab.net:8090'
         }
-      ]
+      ],
+      isHome: true
     }
   },
   mounted(){
-    const oIframe = document.getElementById('show-iframe');
-    const deviceWidth = document.documentElement.clientWidth;
-    const deviceHeight = document.documentElement.clientHeight;
-    oIframe.style.width = deviceWidth + 'px';
-    oIframe.style.height = deviceHeight + 'px';
+      currentComponent = this;
+      this.iframeHeightResize();
   },
   methods:{
+    iframeHeightResize() {
+        const oIframe = document.getElementById('show-iframe');
+        const deviceWidth = document.documentElement.clientWidth;
+        const deviceHeight = document.documentElement.clientHeight;
+        oIframe.style.width = deviceWidth + 'px';
+        oIframe.style.height = deviceHeight + 'px';
+    },
     goBack(){
       this.goBackState = false;
       this.iframeState = false;
@@ -110,6 +129,10 @@ export default {
     showIframe(){
       this.goBackState = true;
       this.iframeState = true;
+    },
+    clickAddress() {
+      this.isHome = false;
+      this.iframeHeightResize()
     }
   }
 }
