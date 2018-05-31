@@ -6,8 +6,8 @@
   el-carousel(:interval="4000" type="card" height="450px")
     el-carousel-item.photo-frame-item(key="1")
       img(src="../../assets/images/pic/1.jpg")
-    el-carousel-item.photo-frame-item(key="2" style="width: 800px")
-      img(src="../../assets/images/pic/2.jpg")
+    //- el-carousel-item.photo-frame-item(key="2")
+    //-   img(src="../../assets/images/pic/2.jpg")
     el-carousel-item.photo-frame-item(key="3")
       img(src="../../assets/images/pic/3.jpg")
     el-carousel-item.photo-frame-item(key="4")
@@ -21,21 +21,21 @@
 import {Carousel} from 'element-ui';
 import $ from 'jquery';
 import _ from 'lodash';
-
-let currentComponent;
-window.onresize = _.throttle(function () {
-    // currentComponent.init();
-    currentComponent.resizeChartsHeight();
-}, 500);
-
 export default {
   name: 'app',
   components: {
       carousel: Carousel
   },
-  created () {
-      currentComponent = this;
-      this.resizeChartsHeight();
+  props: {
+      resize: {
+          type: Number,
+          default: 0
+      }
+  },
+  watch: {
+      resize(resize) {
+          this.resizeChartsHeight();
+      }
   },
   mounted () {
       this.resizeChartsHeight();
@@ -55,12 +55,8 @@ export default {
                   link: '../../assets/images/3.png',
                   index: 2
               }
-          ],
-          resize: 0
+          ]
         }
-  },
-  mounted(){
-    this.resizeChartsHeight();
   },
   methods:{
       resizeChartsHeight() {
@@ -68,7 +64,6 @@ export default {
           let height = $(window).height();
           let width = $(window).width();
           $photo.height(height);
-          currentComponent.resize++;
       }
   }
 }

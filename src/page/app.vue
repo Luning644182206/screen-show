@@ -1,5 +1,5 @@
 <template lang="jade">
-.show-app
+.show-app(id="show-app")
   .menu
     .photo(@click="isHome = true")
       img(src="/src/assets/images/favicon.png")
@@ -15,7 +15,7 @@
           img(src="/src/assets/images/home.png")
       .copyright Copyright © 2005-2018 DMS Lab
   iframe.iframe(v-show="iframeState && (!isHome)", id="show-iframe", frameBorder=0, name="showHere", scrolling=auto, src="")
-  photo(v-show="isHome")
+  photo(v-show="isHome", :resize="resize")
 </template>
 
 <style lang="less">
@@ -90,6 +90,7 @@ import _ from 'lodash';
 let currentComponent;
 window.onresize = _.throttle(function () {
     // currentComponent.init();
+    // window.location.reload();
     currentComponent.iframeHeightResize();
 }, 500);
 export default {
@@ -107,7 +108,8 @@ export default {
             link:'http://demo.yzlab.net:8090'
         }
       ],
-      isHome: true
+      isHome: true,
+      resize: 0
     }
   },
   mounted(){
@@ -121,6 +123,7 @@ export default {
         const deviceHeight = document.documentElement.clientHeight;
         oIframe.style.width = deviceWidth + 'px';
         oIframe.style.height = deviceHeight + 'px';
+        this.resize = this.resize + 1;
     },
     goBack(){
       this.goBackState = false;
