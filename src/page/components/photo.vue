@@ -1,21 +1,22 @@
-<template lang="jade">
-.photo-frame
-  //- carousel(type="card")
-  div
-    div(style="color: #fff; font-size: .5rem; margin-bottom: 10%; padding-top: .2rem; padding-left: .2rem") Hi! It's DMS Lab.
-  el-carousel(:interval="4000" type="card" height="450px")
-    el-carousel-item.photo-frame-item(key="1")
-      img(src="../../assets/images/pic/1.jpg")
-    //- el-carousel-item.photo-frame-item(key="2")
-    //-   img(src="../../assets/images/pic/2.jpg")
-    el-carousel-item.photo-frame-item(key="3")
-      img(src="../../assets/images/pic/3.jpg")
-    el-carousel-item.photo-frame-item(key="4")
-      img(src="../../assets/images/pic/4.jpg")
-    el-carousel-item.photo-frame-item(key="5")
-      img(src="../../assets/images/pic/5.jpg")
-    el-carousel-item.photo-frame-item(key="6")
-      img(src="../../assets/images/pic/6.jpg")
+<template lang="pug">
+div
+  .photo-frame
+    //- carousel(type="card")
+    div
+      div(style="color: #fff; font-size: .5rem; margin-bottom: 10%; padding-top: .2rem; padding-left: .2rem") Hi! It's DMS Lab.
+    el-carousel(:interval="4000" type="card" height="450px")
+      el-carousel-item.photo-frame-item(key="1")
+        img(src="../../assets/images/pic/1.jpg")
+      //- el-carousel-item.photo-frame-item(key="2")
+      //-   img(src="../../assets/images/pic/2.jpg")
+      el-carousel-item.photo-frame-item(key="3")
+        img(src="../../assets/images/pic/3.jpg")
+      el-carousel-item.photo-frame-item(key="4")
+        img(src="../../assets/images/pic/4.jpg")
+      el-carousel-item.photo-frame-item(key="5")
+        img(src="../../assets/images/pic/5.jpg")
+      el-carousel-item.photo-frame-item(key="6")
+        img(src="../../assets/images/pic/6.jpg")
 </template>
 <script>
 import {Carousel} from 'element-ui';

@@ -1,21 +1,21 @@
-<template lang="jade">
-.show-app(id="show-app")
-  .menu
-    .photo(@click="isHome = true")
-      img(src="/src/assets/images/favicon.png")
-    .name(@click="clickAddress()")
-      ul
-        li.one(v-for="item in webAddress")
-          a(:href="item.link" target="showHere" @click="showIframe") {{item.name}}
-    .footer
-      .pic
-        a.github(href="https://github.com/fromskyblue/" target="_blank")
-          img(src="/src/assets/images/github.png")
-        a.home(href="http://yzlab.net/" target="_blank")
-          img(src="/src/assets/images/home.png")
-      .copyright Copyright © 2005-2018 DMS Lab
-  iframe.iframe(v-show="iframeState && (!isHome)", id="show-iframe", frameBorder=0, name="showHere", scrolling=auto, src="")
-  photo(v-show="isHome", :resize="resize")
+<template lang="pug">
+  .show-app(id="show-app")
+    .menu
+      .photo(@click="isHome = true")
+        img(src="../assets/images/favicon.png")
+      .name(@click="clickAddress()")
+        ul
+          li.one(v-for="item in webAddress")
+            a(:href="item.link" target="showHere" @click="showIframe") {{item.name}}
+      .footer
+        .pic
+          a.github(href="https://github.com/fromskyblue/" target="_blank")
+            img(src="../assets/images/github.png")
+          a.home(href="http://yzlab.net/" target="_blank")
+            img(src="../assets/images/home.png")
+        .copyright Copyright © 2005-2019 DMS Lab
+    iframe.iframe(v-show="iframeState && (!isHome)", id="show-iframe", frameBorder=0, name="showHere", scrolling=auto, src="")
+    photo(v-show="isHome", :resize="resize")
 </template>
 
 <style lang="less">

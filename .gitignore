@@ -2,7 +2,9 @@ node_modules/*
 testout/*
 coverage/*
 _dev/**
+dist/**
 npm-debug.log
 output
 output.zip
 yarn-error.log
+
