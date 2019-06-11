@@ -19,7 +19,7 @@ server {
     index index.html;
     location / {
          error_log /your_errorlog_path/error.log;
-         access_log //your_accesslog_path/access.log;
+         access_log /your_accesslog_path/access.log;
     }
 }
 ```
